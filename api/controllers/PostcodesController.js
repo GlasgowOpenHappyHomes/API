@@ -36,9 +36,15 @@ module.exports = {
     	req.query.limit = 100;	
     }
 
-    Postcodes.find(req.query).exec(function(err, result){
+    var limit = req.query.limit;
+
+    var find_params = req.query;
+    delete find_params.limit;
+
+    Postcodes.find(req.query).where(find_params).limit(limit).exec(function(err, result){
     	res.json(result);
     });
+    
   }
 
 };
