@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
+	"devDependencies" : {
+		"mocha": "0.3.x"
+	},
   "dependencies": {
     "sails": "^0.9.13",
     "grunt": "0.4.1",
@@ -14,7 +17,7 @@
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-		"test": "expresso test/*"
+    "test": "mocha"
   },
   "main": "app.js",
   "repository": "",
