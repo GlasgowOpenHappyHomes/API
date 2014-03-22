@@ -22,3 +22,20 @@ CREATE TABLE readings (
 
 DROP INDEX idx_reading_datetime ON readings;
 CREATE INDEX idx_reading_datetime ON readings(datetime);
+
+-- pre-computed table with Day of Week, Hour of Day and the corresponding power
+-- need to update this when readings is updated
+
+DROP TABLE IF EXISTS dow_hour_power;
+CREATE TABLE dow_hour_power AS (
+	SELECT location_id,
+	EXTRACT(HOUR FROM datetime) AS hour,
+	DAYOFWEEK(datetime) AS dow,
+	reading
+	FROM readings
+);
+
+DROP INDEX idx_dow_hour;
+CREATE INDEX idx_dow_hour ON dow_hour_power(dow, hour);
+
+-- work out the quartile data in Node - doing it in MySQL is a trip to madness!
