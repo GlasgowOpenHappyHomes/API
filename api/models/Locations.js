@@ -8,6 +8,10 @@
 
 module.exports = {
 
+	tableName: 'locations',
+    adapter: 'mysql',
+    migrate: 'safe',
+		
   attributes: {
 		name: 'STRING'
 		
