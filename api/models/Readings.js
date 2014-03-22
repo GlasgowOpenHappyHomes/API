@@ -9,19 +9,13 @@
 module.exports = {
 
 	tableName: 'readings',
-    adapter: 'mysql',
-    migrate: 'safe',
+  adapter: 'mysql',
+  migrate: 'safe',
 
   attributes: {
   	
-  	/* e.g.
-  	nickname: 'string'
-  	*/
+      //Attributes are automatically gathered from the database table defined above
 
-  	id:'int',
-  	datetime:'timestamp',
-  	location_id:'int',
-  	reading:'float'
     
   }
 

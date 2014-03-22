@@ -1,5 +1,5 @@
 /**
- * Location
+ * Postcodes
  *
  * @module      :: Model
  * @description :: A short summary of how this model works and what it represents.
@@ -8,12 +8,14 @@
 
 module.exports = {
 
-	tableName: 'locations',
+	tableName: 'postcodes',
     adapter: 'mysql',
-    migrate: 'safe',
-		
+  	migrate: 'safe',
+
+
   attributes: {
-		  	//Attributes are automatically gathered from the database table defined above
+  	
+  	//Attributes are automatically gathered from the database table defined above
     
   }
 
