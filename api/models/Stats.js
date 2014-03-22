@@ -32,7 +32,7 @@ module.exports = {
 
 		
 			if (data.length === 0) {
-				successFunc({})
+				successfunc({})
 			}
 			
 			statsObj = new StatsHelper().push(data)
