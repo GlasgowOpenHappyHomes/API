@@ -24,7 +24,23 @@ module.exports = {
    * Overrides for the settings in `config/controllers.js`
    * (specific to ReadingsController)
    */
-  _config: {}
+  _config: {},
+
+  find: function(req, res, next) {
+    if(req.query.location_id === undefined) {
+    	if(req.query.limit === undefined) {
+	    	req.query.limit = 20;
+	    }
+
+	    if(req.query.limit > 100) {
+	    	req.query.limit = 100;	
+	    }
+    }
+
+    Readings.find(req.query).exec(function(err, result){
+    	res.json(result);
+    });
+  }
 
   
 };
