@@ -27,13 +27,6 @@ module.exports = {
   _config: {},
 	
   getStats: function(req, res, next) {
-    if(req.query.limit === undefined) {
-    	req.query.limit = 20;
-    }
-
-    if(req.query.limit > 100) {
-    	req.query.limit = 100;	
-    }
 		
 		if (req.query.hour) {
 			req.query.hour = parseInt(req.query.hour)
@@ -43,16 +36,21 @@ module.exports = {
 			req.query.dow = parseInt(req.query.dow)
 		}
 		
+		if (req.query.location_id) {
+			req.query.location_id = parseInt(req.query.location_id)
+		}
+		
 		
 		var StatsHelper = require('fast-stats').Stats;
 		
 		var data = []
-		console.log(req.query);
+		//req.query = {location_id: req.query.location_id, dow: req.query.dow, hour: req.query.hour}
 		
-		console.log(Stats.find(req.query).query())
+
+		
     Stats.find(req.query).exec(function(err, result){
 			result.forEach(function(entry) {
-				console.log(entry);
+				
 				data.push(entry.reading)
 			});
 
@@ -65,10 +63,13 @@ module.exports = {
 		
 			res.json(
 				{
+					size: data.length,
 					min: statsObj.range()[0],
+					lower_whisker: statsObj.percentile(9),
 					lower_quartile: statsObj.percentile(25),
 					median: statsObj.median(),
 					upper_quartile: statsObj.percentile(75),
+					upper_whisker: statsObj.percentile(91),
 					max: statsObj.range()[1]
 				}
 			);
