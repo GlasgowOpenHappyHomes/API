@@ -70,7 +70,8 @@ module.exports = {
 					median: statsObj.median(),
 					upper_quartile: statsObj.percentile(75),
 					upper_whisker: statsObj.percentile(91),
-					max: statsObj.range()[1]
+					max: statsObj.range()[1],
+					rawData: data
 				}
 			);
     });
