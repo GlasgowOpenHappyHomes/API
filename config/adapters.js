@@ -32,6 +32,7 @@ module.exports.adapters = {
     host: 'glasgowopenhacks.cfjj5gpnsmwp.eu-west-1.rds.amazonaws.com',
     user: 'glasgowopen',
     //Password lives in local config
+    password: process.env.DB_PASSWORD,
     database: 'glasgowopen',
   }
 };
