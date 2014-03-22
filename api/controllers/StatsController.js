@@ -27,8 +27,11 @@ module.exports = {
   _config: {},
 	
   getStats: function(req, res, next) {
+		//this was causing some issues with the web-app
+		res.header('Access-Control-Allow-Origin' , '*' );
+
 		var stats = Stats.fetch(req.query.location_id, req.query.dow, req.query.hour, gotStats)
-		
+
 		function gotStats(result)
 		{
 			res.json(result);
