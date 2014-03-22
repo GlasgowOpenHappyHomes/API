@@ -37,7 +37,28 @@ module.exports = {
 	    }
     }
 
-    Readings.find(req.query).exec(function(err, result){
+    if(req.query.datetime !== undefined) {
+      if(req.query.datetime.indexOf('>=') > -1) {
+        req.query.datetime = req.query.datetime.replace('>=', '');
+        req.query.datetime = {'>=': req.query.datetime}
+      } else if (req.query.datetime.indexOf('>') > -1) {
+        req.query.datetime = req.query.datetime.replace('>', '');
+        req.query.datetime = {'>': req.query.datetime}
+      } else if (req.query.datetime.indexOf('<=') > -1) {
+        req.query.datetime = req.query.datetime.replace('<=', '');
+        req.query.datetime = {'<=': req.query.datetime}
+      } else if (req.query.datetime.indexOf('<') > -1) {
+        req.query.datetime = req.query.datetime.replace('<', '');
+        req.query.datetime = {'<': req.query.datetime}
+      }
+    }
+
+    var limit = req.query.limit;
+
+    var find_params = req.query;
+    delete find_params.limit;
+
+    Readings.find(req.query).where(find_params).limit(limit).exec(function(err, result){
     	res.json(result);
     });
   }
