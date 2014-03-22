@@ -41,4 +41,4 @@ CREATE INDEX idx_dow_hour ON dow_hour_power(dow, hour);
 -- work out the quartile data in Node - doing it in MySQL is a trip to madness!
 
 DROP VIEW last_current_hour_reading;
-CREATE VIEW last_current_hour_reading AS SELECT location_id, max(datetime), reading from readings where hour(datetime) = hour(now()) group by location_id;
+CREATE VIEW last_current_hour_reading AS SELECT location_id, max(datetime) AS datetime, reading from readings where hour(datetime) = hour(now()) group by location_id;
