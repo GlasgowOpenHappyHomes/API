@@ -37,6 +37,22 @@ module.exports = {
 	    }
     }
 
+    if(req.query.datetime !== undefined) {
+      if(req.query.datetime.indexOf('>=') > -1) {
+        req.query.datetime = req.query.datetime.replace('>=', '');
+        req.query.datetime = {'>=': req.query.datetime}
+      } else if (req.query.datetime.indexOf('>') > -1) {
+        req.query.datetime = req.query.datetime.replace('>', '');
+        req.query.datetime = {'>': req.query.datetime}
+      } else if (req.query.datetime.indexOf('<=') > -1) {
+        req.query.datetime = req.query.datetime.replace('<=', '');
+        req.query.datetime = {'<=': req.query.datetime}
+      } else if (req.query.datetime.indexOf('<') > -1) {
+        req.query.datetime = req.query.datetime.replace('<', '');
+        req.query.datetime = {'<': req.query.datetime}
+      }
+    }
+
     var limit = req.query.limit;
 
     var find_params = req.query;
