@@ -3,16 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
-	"devDependencies" : {
-		"mocha": "*",
-		"chai": "*"
-	},
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  },
   "dependencies": {
-    "sails": "^0.9.13",
-    "grunt": "0.4.1",
-    "sails-disk": "~0.9.0",
     "ejs": "0.8.4",
+    "fast-stats": "0.0.2",
+    "grunt": "0.4.1",
     "optimist": "^0.3.4",
+    "sails": "^0.9.13",
+    "sails-disk": "~0.9.0",
     "sails-mysql": "^0.9.9"
   },
   "scripts": {
