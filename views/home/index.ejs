@@ -21,6 +21,8 @@
 			</ul>
 		</li>
 		<li>
+			<a href="stats/getStats">Stats</a>
+		</li>
 		<a href="postcodes">Postcodes</a> 
 			<ul>
 				<li>
@@ -30,6 +32,9 @@
 					 Maximum 100 per request, paging is possible with GET params.
 				</li>
 			</ul>
+		</li>
+		<li>
+			<a href="currentReading">Current Reading</a>
 		</li>
 		</ul>
 
@@ -51,7 +56,7 @@
 		</ul>
 		
 		<h2>Stats</h2>
-		<p>We haven't generated this stuff yet!</p>
+		<p>The computed stats for the location - filter by location_id, dow (day of week) and hour (if you don't specify all of those you'll get stats for what ones you specify - might be a lot of data!)</p>
 		<ul>
 			<li>Minimum</li>
 			<li>9% interval</li>
@@ -60,5 +65,31 @@
 			<li>Third (upper) quartile</li>
 			<li>91% interval</li>
 			<li>Maximum</li>
+		</ul>
+		
+		<p>All numbers are in kilowatts</p>
+		
+		<h3>Current usage - /currentReading</h3>
+		<p>Filter by location_id</p>
+		<ul>
+			<li>location_id - what you asked for!</li>
+			<li>datetime - the date and time the reading was taken</li>
+			<li>reading - the power in kilowatts</li>
+		</ul>
+		
+		<p>To work out happy/neutral/sad:</p>
+		<ul>
+			<li>Get the current reading for the location ID</li>
+			<li>Get the stats for that location ID, the current hour and day of week (1 = Monday)</li>
+			<li>Compare them:</li>
+			<ul>
+				<li>If the reading is below lower_whisker, really happy face</li>
+				<li>If the reading is below lower_quartile, happy face</li>
+				<li>If the reading is above lower_quartile but below upper_quartile, neutral face</li>
+				<li>If the reading is above upper_quartile, sad face</li>
+				<li>If the reading is above upper_whisker, really sad face</li>
+			</ul>
+		</ul>
+		
 	</body>
 </html>
