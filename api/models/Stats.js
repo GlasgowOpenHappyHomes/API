@@ -42,7 +42,7 @@ module.exports = {
 					min: statsObj.range()[0],
 					lower_whisker: statsObj.percentile(9),
 					lower_quartile: statsObj.percentile(25),
-					median: statsObj.median(),
+					median: Math.round(statsObj.median() * 100) / 100,
 					upper_quartile: statsObj.percentile(75),
 					upper_whisker: statsObj.percentile(91),
 					max: statsObj.range()[1],
