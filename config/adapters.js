@@ -29,10 +29,10 @@ module.exports.adapters = {
   mysql: {
     module: 'sails-mysql',
     port: 3306,
-    host: 'glasgowopenhacks.cfjj5gpnsmwp.eu-west-1.rds.amazonaws.com',
-    user: 'glasgowopen',
+    host: 'heloo.net',
+    user: 'happyhom_storage',
     //Password lives in local config
     password: process.env.DB_PASSWORD,
-    database: 'glasgowopen',
+    database: 'happyhom_storage',
   }
 };
