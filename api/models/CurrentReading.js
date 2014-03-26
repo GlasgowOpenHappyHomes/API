@@ -7,7 +7,7 @@
  */
 
 module.exports = {
-	tableName: 'last_current_hour_reading',
+	tableName: 'current_readings',
   adapter: 'mysql',
   migrate: 'safe',
 	

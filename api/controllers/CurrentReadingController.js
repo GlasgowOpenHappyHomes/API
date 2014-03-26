@@ -24,7 +24,17 @@ module.exports = {
    * Overrides for the settings in `config/controllers.js`
    * (specific to Current_readingController)
    */
-  _config: {}
+  _config: {},
 
+  find: function(req, res, next) {
+
+		var now = new Date();
+    req.query.hour = now.getHours();
+
+    CurrentReading.find(req.query).exec(function(err, result){
+    	res.json(result);
+    });
+    
+  }
   
 };
